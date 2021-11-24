@@ -4,12 +4,12 @@ public class Node {
 	private int elem;
 	private Node next;
 	
-	Node(int elem) {
+	public Node(int elem) {
 		this.elem = elem;
 		next = null;
 	}
 
-	Node (int elem, Node next) {
+	public Node (int elem, Node next) {
 		this.elem = elem;
 		this.next = next;
 	}
@@ -26,4 +26,7 @@ public class Node {
 		this.next = next;
 	}
 
+    public void setElem(int elem) {
+        this.elem = elem;
+    }
 }
