@@ -31,13 +31,18 @@ public class RecursionExamples {
 
     public static long sum(int n) {
 
-        long sum = 0;
+        long result = 0;
         if (n < 0)
             throw new IllegalArgumentException();
 
         // FILL IN CODE
+        if (n <= 1) {
+            return n; // base case
+        }
 
-        return sum;
+
+        result =  n + sum(n-1);
+        return result;
     }
 
     /**
@@ -47,10 +52,14 @@ public class RecursionExamples {
      * @return x to the power of n
      */
     public static double pow(double x, int n) {
-        // FILL IN CODE
+        if (n < 0) {
+            return (1.0 / x) * pow(x, n + 1);
+        }
+        if (n == 0)
+            return 1;
 
+        return x * pow(x, n - 1);
 
-        return 0;
     }
 
     /**
@@ -63,14 +72,36 @@ public class RecursionExamples {
         // FILL IN CODe
         if (s.isEmpty())
             return s;
-        return reverse(s.substring(1)) + s.charAt(0);
+        //String result  = reverse(s.substring(1)) + s.charAt(0);
+        //return result;
+
+        String result = s.charAt(s.length() - 1) + reverse(s.substring(0, s.length() - 1));
+        return result;
+
+    }
+
+    public static boolean isPalindrome(String s) {
+        s = s.toLowerCase();
+        if (s.isEmpty())
+            return true;
+        if (s.length() == 1)
+            return true;
+
+        if (s.charAt(0) != s.charAt(s.length() - 1))
+            return false;
+        return isPalindrome(s.substring(1, s.length() - 1));
+
     }
 
 
     public static void main(String[] args) {
-        long res = factorial(3);
-        System.out.println(res);
+        //long res = factorial(4);
+        //System.out.println(res);
 
+       // System.out.println(pow(3, 2));
+       // System.out.println(pow(3, -1));
+        //System.out.println(reverse("university"));
+        System.out.println(isPalindrome("Hannah"));
     }
 
 }
